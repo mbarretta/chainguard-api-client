@@ -157,6 +157,116 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/iam/v2beta1/accountAssociations/{uid}:checkAccountAssociation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Check Account Association
+         * @description CheckAccountAssociation validates whether a cloud provider account
+         *     association is correctly configured by performing a live credential
+         *     exchange against the provider's STS/token endpoint.
+         */
+        post: operations["AccountAssociationsService_CheckAccountAssociation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/iam/v2beta1/externalGroupRoleMappings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List External Group Role Mappings
+         * @description ListExternalGroupRoleMappings returns mappings matching filter criteria with pagination.
+         */
+        get: operations["ExternalGroupRoleMappingsService_ListExternalGroupRoleMappings"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/iam/v2beta1/externalGroupRoleMappings/{parent}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create External Group Role Mapping
+         * @description CreateExternalGroupRoleMapping creates a new mapping under an identity provider.
+         *     The caller must hold both the identity provider create and role binding create capabilities,
+         *     and must already possess the capabilities granted by the mapped role (anti-escalation).
+         */
+        post: operations["ExternalGroupRoleMappingsService_CreateExternalGroupRoleMapping"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/iam/v2beta1/externalGroupRoleMappings/{uid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get External Group Role Mapping
+         * @description GetExternalGroupRoleMapping retrieves a single external group role mapping by UID.
+         */
+        get: operations["ExternalGroupRoleMappingsService_GetExternalGroupRoleMapping"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete External Group Role Mapping
+         * @description DeleteExternalGroupRoleMapping deletes a mapping by UID.
+         *     Uses hard delete to maintain the unique constraint on (idp, group, role, scope).
+         */
+        delete: operations["ExternalGroupRoleMappingsService_DeleteExternalGroupRoleMapping"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/iam/v2beta1/externalGroupRoleMappings:batchDelete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Batch Delete External Group Role Mappings
+         * @description BatchDeleteExternalGroupRoleMappings deletes the named mappings under an
+         *     identity provider in one call, for cleanup, offboarding, or teardown.
+         */
+        post: operations["ExternalGroupRoleMappingsService_BatchDeleteExternalGroupRoleMappings"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/iam/v2beta1/groupInvites": {
         parameters: {
             query?: never;
@@ -337,6 +447,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/iam/v2beta1/groups:checkEligibility": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Check Eligibility
+         * @description CheckEligibility reports whether the caller passes the same eligibility
+         *     gates applied by LookupGroup and RequestGroupAccess. A response of
+         *     eligible=true does not guarantee those calls succeed for other reasons
+         *     (no matching org, already requested, etc.).
+         */
+        get: operations["GroupsService_CheckEligibility"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/iam/v2beta1/groups:lookupGroup": {
         parameters: {
             query?: never;
@@ -447,6 +580,47 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    "/iam/v2beta1/identities:lookupIdentity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Lookup Identity
+         * @description This is an unscoped endpoint: any authenticated caller may invoke it.
+         */
+        get: operations["IdentitiesService_LookupIdentity"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/iam/v2beta1/identities:updateIdentityMetadata": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Update Identity Metadata
+         * @description This is an unscoped endpoint: any authenticated caller may invoke it.
+         *     Follows AIP-134: supports field mask for partial updates.
+         */
+        patch: operations["IdentitiesService_UpdateIdentityMetadata"];
         trace?: never;
     };
     "/iam/v2beta1/identityProviders": {
@@ -620,6 +794,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/iam/v2beta1/roleBindings:batchCreate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Batch Create Role Bindings
+         * @description BatchCreateRoleBindings creates multiple role bindings under a single parent
+         *     group atomically. Either all bindings are created or none are.
+         */
+        post: operations["RoleBindingsService_BatchCreateRoleBindings"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/iam/v2beta1/roles": {
         parameters: {
             query?: never;
@@ -707,6 +902,90 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/iam/v2beta1/terms/{group}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Terms Acceptances
+         * @description ListTermsAcceptances returns the legal documents that a group has accepted.
+         */
+        get: operations["TermsService_ListTermsAcceptances"];
+        put?: never;
+        /**
+         * Accept Terms
+         * @description AcceptTerms records that a group has accepted one or more legal documents.
+         */
+        post: operations["TermsService_AcceptTerms"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/libraries/v2beta1/artifacts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Artifacts
+         * @description ListArtifacts returns artifacts based on filter criteria with pagination support.
+         */
+        get: operations["ArtifactsService_ListArtifacts"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/libraries/v2beta1/artifacts/count": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Artifact Count
+         * @description GetArtifactCount returns the total number of artifacts for specified ecosystems.
+         */
+        get: operations["ArtifactsService_GetArtifactCount"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/libraries/v2beta1/artifacts/{artifactId}/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Artifact Versions
+         * @description ListArtifactVersions returns all versions of a specific artifact with pagination support.
+         */
+        get: operations["ArtifactsService_ListArtifactVersions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/ping/v2beta1/ping": {
         parameters: {
             query?: never;
@@ -747,6 +1026,86 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/registry/v2beta1/repos/{parent}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create Repo
+         * @description CreateRepo creates a repository under a parent group.
+         */
+        post: operations["ReposService_CreateRepo"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/registry/v2beta1/repos/{repo.uid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Update Repo
+         * @description UpdateRepo updates a repository's mutable fields.
+         */
+        patch: operations["ReposService_UpdateRepo"];
+        trace?: never;
+    };
+    "/registry/v2beta1/repos/{repoUid}/digests/{digest}/architectures": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Architectures
+         * @description GetArchitectures returns the architectures present in an OCI index manifest.
+         */
+        get: operations["ImagesService_GetArchitectures"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/registry/v2beta1/repos/{repoUid}/digests/{digest}/size": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Size
+         * @description GetSize returns the size of a container image for a specific architecture.
+         */
+        get: operations["ImagesService_GetSize"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/registry/v2beta1/repos/{uid}": {
         parameters: {
             query?: never;
@@ -761,7 +1120,11 @@ export interface paths {
         get: operations["ReposService_GetRepo"];
         put?: never;
         post?: never;
-        delete?: never;
+        /**
+         * Delete Repo
+         * @description DeleteRepo deletes a repository by UID.
+         */
+        delete: operations["ReposService_DeleteRepo"];
         options?: never;
         head?: never;
         patch?: never;
@@ -910,6 +1273,17 @@ export interface components {
          *      - CAP_REPO_BLOBS_GET: repo.blobs.get is a capability required to pull container images.
          *     We explicitly define this to distinguish roles that allow browsing/viewing
          *     metadata associated with images vs pulling the image itself.
+         *      - CAP_REPO_CREATE: TODO(laney): cassie's CAS/ActionCache/ByteStream handlers also
+         *     accept CAP_REPO_CREATE as a transitional grant for write access to
+         *     its REAPI cache surface. Once consumers have migrated to
+         *     CAP_CASSIE_CAS_WRITE, drop the dual-accept in cassie.
+         *      - CAP_REPO_LIST: TODO(laney): cassie's CAS/ActionCache/ByteStream handlers also
+         *     accept CAP_REPO_LIST as a transitional grant for read access to
+         *     its REAPI cache surface. Once consumers have migrated to
+         *     CAP_CASSIE_CAS_READ, drop the dual-accept in cassie.
+         *      - CAP_REPO_INTERNAL_ADMIN: repo.internal.admin allows administering internal-only repository fields
+         *     (catalog tier, bundles, aliases, active tags, README, and sync settings)
+         *     that are otherwise read-only to customers.
          *      - CAP_APK_BLOBS_GET: apk.blobs.get is a capability required to pull APKs.
          *     We explicitly define this to distinguish roles that allow browsing/viewing
          *     metadata associated with APKs vs pulling the APK itself.
@@ -919,10 +1293,15 @@ export interface components {
          *      - CAP_LIBRARIES_CACHE_INVALIDATE: Cache invalidation capability for the libraries cache (covers all ecosystems).
          *     Granted to org owners and account admins; not to regular developer members.
          *      - CAP_LIBRARIES_REBUILDER_REQUESTS_CREATE: Rebuilder API capabilities
+         *      - CAP_LIBRARIES_AWS_MARKETPLACE_SUBSCRIPTIONS_CREATE: AWS Marketplace Subscriptions (Chainguard Libraries on AWS Security Hub Extended)
          *      - CAP_REGISTRY_ENTITLEMENTS_LIST: Registry Entitlements
          *      - CAP_REGISTRY_SETTINGS_LIST: Registry Settings
          *      - CAP_REGISTRY_DEPLOYMENTS_CREATE: Registry Deployments
-         *      - CAP_POLICY_GATES_POLICY_CREATE: Policy Gates
+         *      - CAP_POLICIES_POLICY_CREATE: Policies
+         *      - CAP_POLICIES_OVERRIDE_CREATE: Policy overrides waive enforcement for a specific artifact. These are
+         *     separate capabilities from binding management so they can be granted
+         *     independently. By default create and delete are held by org owners (like
+         *     binding management) and listing is available to viewers.
          *      - CAP_TERMS_ACCEPT: Terms
          *      - CAP_GULFSTREAM: This is orthogonal enough that we should leave
          *     it somewhat separate, so add new capabilities above.
@@ -931,11 +1310,26 @@ export interface components {
          *     e.g. could each logical controller/webhook be its own
          *     capability?
          *      - CAP_GUARDENER_DFC_CONVERT: Guardener
+         *      - CAP_GUARDENER_ASSOCIATION_MANAGE: guardener.association.manage gates self-service linking/unlinking of a
+         *     GitHub org to a Chainguard group (the GroupAccountAssociations record).
          *      - CAP_MCP_TOOL_CALL: MCP tool calls
+         *      - CAP_SKILLS_PUBLISH: Skills registry — publishing skill artifacts to skills.cgr.dev
+         *      - CAP_SKILLS_ENTITLEMENTS_CREATE: Skills registry entitlements
+         *      - CAP_ARGOS_DOCUMENTS_CREATE: Argos — client-side encrypted document records.
+         *      - CAP_ARGOS_OSV_READ: Argos — Private OSV API (customer-facing OSV query surface).
+         *      - CAP_LIBRARIES_POLICY_CREATE: Libraries Policy Gates — customer-facing policies and bindings that
+         *     configure the cooldown and malware gates applied to upstream package pulls,
+         *     plus the block events recorded when a pull is withheld.
+         *      - CAP_BUILDAPI_BUILD_CREATE: Build API
+         *      - CAP_CASSIE_CAS_READ: Cassie REAPI cache surface. CAS (blobs + ByteStream) and the ActionCache
+         *     are separately gated: a caller may read or write action results without
+         *     any authority over the underlying content blobs, and vice versa.
+         *      - CAP_ACTIONS_LIST: Actions catalog — the read-only catalog of Chainguard-published GitHub
+         *     Actions and the upstreams they mirror. Writes are internal (importer only).
          * @default UNKNOWN
          * @enum {string}
          */
-        "chainguard.capabilities.Capability": "UNKNOWN" | "CAP_INTERNAL" | "CAP_IAM_GROUPS_CREATE" | "CAP_IAM_GROUPS_UPDATE" | "CAP_IAM_GROUPS_LIST" | "CAP_IAM_GROUPS_DELETE" | "CAP_IAM_GROUP_INVITES_CREATE" | "CAP_IAM_GROUP_INVITES_LIST" | "CAP_IAM_GROUP_INVITES_DELETE" | "CAP_IAM_ROLES_CREATE" | "CAP_IAM_ROLES_UPDATE" | "CAP_IAM_ROLES_LIST" | "CAP_IAM_ROLES_DELETE" | "CAP_IAM_ROLE_BINDINGS_CREATE" | "CAP_IAM_ROLE_BINDINGS_UPDATE" | "CAP_IAM_ROLE_BINDINGS_LIST" | "CAP_IAM_ROLE_BINDINGS_DELETE" | "CAP_TENANT_CLUSTERS_CREATE" | "CAP_TENANT_CLUSTERS_UPDATE" | "CAP_TENANT_CLUSTERS_LIST" | "CAP_TENANT_CLUSTERS_DELETE" | "CAP_TENANT_CLUSTERS_DISCOVER" | "CAP_TENANT_RECORDS_LIST" | "CAP_TENANT_RECORD_CONTEXTS_LIST" | "CAP_TENANT_RECORD_SIGNATURES_LIST" | "CAP_TENANT_RECORD_POLICY_RESULTS_LIST" | "CAP_TENANT_RISKS_LIST" | "CAP_TENANT_SBOMS_LIST" | "CAP_TENANT_VULN_REPORTS_LIST" | "CAP_TENANT_ATTESTATIONS_LIST" | "CAP_IAM_ACCOUNT_ASSOCIATIONS_CREATE" | "CAP_IAM_ACCOUNT_ASSOCIATIONS_UPDATE" | "CAP_IAM_ACCOUNT_ASSOCIATIONS_LIST" | "CAP_IAM_ACCOUNT_ASSOCIATIONS_DELETE" | "CAP_IAM_POLICY_CREATE" | "CAP_IAM_POLICY_UPDATE" | "CAP_IAM_POLICY_LIST" | "CAP_IAM_POLICY_DELETE" | "CAP_IAM_IDENTITY_CREATE" | "CAP_IAM_IDENTITY_UPDATE" | "CAP_IAM_IDENTITY_LIST" | "CAP_IAM_IDENTITY_DELETE" | "CAP_TENANT_NODES_LIST" | "CAP_TENANT_NAMESPACES_LIST" | "CAP_TENANT_WORKLOADS_LIST" | "CAP_IAM_IDENTITY_PROVIDERS_CREATE" | "CAP_IAM_IDENTITY_PROVIDERS_UPDATE" | "CAP_IAM_IDENTITY_PROVIDERS_LIST" | "CAP_IAM_IDENTITY_PROVIDERS_DELETE" | "CAP_EVENTS_SUBSCRIPTION_CREATE" | "CAP_EVENTS_SUBSCRIPTION_UPDATE" | "CAP_EVENTS_SUBSCRIPTION_LIST" | "CAP_EVENTS_SUBSCRIPTION_DELETE" | "CAP_REPO_BLOBS_GET" | "CAP_REPO_CREATE" | "CAP_REPO_UPDATE" | "CAP_REPO_LIST" | "CAP_REPO_DELETE" | "CAP_MANIFEST_CREATE" | "CAP_MANIFEST_UPDATE" | "CAP_MANIFEST_LIST" | "CAP_MANIFEST_DELETE" | "CAP_TAG_CREATE" | "CAP_TAG_UPDATE" | "CAP_TAG_LIST" | "CAP_TAG_DELETE" | "CAP_MANIFEST_METADATA_LIST" | "CAP_REFERRERS_LIST" | "CAP_APK_BLOBS_GET" | "CAP_APK_CREATE" | "CAP_APK_UPDATE" | "CAP_APK_LIST" | "CAP_APK_DELETE" | "CAP_VERSION_LIST" | "CAP_VULN_REPORT_CREATE" | "CAP_VULN_REPORT_LIST" | "CAP_VULN_CREATE" | "CAP_BUILD_REPORT_LIST" | "CAP_LIBRARIES_ENTITLEMENTS_CREATE" | "CAP_LIBRARIES_ENTITLEMENTS_LIST" | "CAP_LIBRARIES_ENTITLEMENTS_DELETE" | "CAP_LIBRARIES_ARTIFACTS_LIST" | "CAP_LIBRARIES_PYTHON_LIST" | "CAP_LIBRARIES_PYTHON_CREATE" | "CAP_LIBRARIES_JAVA_LIST" | "CAP_LIBRARIES_JAVA_CREATE" | "CAP_LIBRARIES_JAVASCRIPT_LIST" | "CAP_LIBRARIES_JAVASCRIPT_CREATE" | "CAP_LIBRARIES_CACHE_INVALIDATE" | "CAP_LIBRARIES_REBUILDER_REQUESTS_CREATE" | "CAP_LIBRARIES_REBUILDER_REQUESTS_LIST" | "CAP_LIBRARIES_REBUILDER_REQUESTS_CANCEL" | "CAP_LIBRARIES_REBUILDER_REQUESTS_GROUP_UPDATE" | "CAP_LIBRARIES_REBUILDER_ARTIFACTS_INVALIDATE" | "CAP_LIBRARIES_REBUILDER_EXCLUSIONS_MANAGE" | "CAP_LIBRARIES_REBUILDER_BUILDS_READ" | "CAP_LIBRARIES_REBUILDER_BUILDS_TOKENS_FETCH" | "CAP_LIBRARIES_REBUILDER_BUILDS_UNTRUSTED" | "CAP_LIBRARIES_REBUILDER_REMEDIATED_ARTIFACTS_READ" | "CAP_REGISTRY_ENTITLEMENTS_LIST" | "CAP_REGISTRY_ENTITLEMENTS_CREATE" | "CAP_REGISTRY_ENTITLEMENTS_DELETE" | "CAP_REGISTRY_ENTITLEMENTS_IMAGES_ADD" | "CAP_REGISTRY_SETTINGS_LIST" | "CAP_REGISTRY_SETTINGS_UPDATE" | "CAP_SIGSTORE_CREATE" | "CAP_SIGSTORE_UPDATE" | "CAP_SIGSTORE_LIST" | "CAP_SIGSTORE_DELETE" | "CAP_SIGSTORE_CERTIFICATE_CREATE" | "CAP_ADVISORIES_CREATE" | "CAP_ADVISORIES_UPDATE" | "CAP_ADVISORIES_LIST" | "CAP_ADVISORIES_DELETE" | "CAP_ADVISORIES_APPROVE" | "CAP_REGISTRY_DEPLOYMENTS_CREATE" | "CAP_REGISTRY_DEPLOYMENTS_UPDATE" | "CAP_REGISTRY_DEPLOYMENTS_LIST" | "CAP_POLICY_GATES_POLICY_CREATE" | "CAP_POLICY_GATES_POLICY_UPDATE" | "CAP_POLICY_GATES_POLICY_LIST" | "CAP_POLICY_GATES_POLICY_DELETE" | "CAP_POLICY_GATES_BINDING_CREATE" | "CAP_POLICY_GATES_BINDING_UPDATE" | "CAP_POLICY_GATES_BINDING_LIST" | "CAP_POLICY_GATES_BINDING_DELETE" | "CAP_REPO_CHECK_POLICIES" | "CAP_PACKAGES_ENTITLEMENTS_LIST" | "CAP_TERMS_ACCEPT" | "CAP_TERMS_LIST" | "CAP_GULFSTREAM" | "CAP_GUARDENER_DFC_CONVERT" | "CAP_MCP_TOOL_CALL";
+        "chainguard.capabilities.Capability": "UNKNOWN" | "CAP_INTERNAL" | "CAP_IAM_GROUPS_CREATE" | "CAP_IAM_GROUPS_UPDATE" | "CAP_IAM_GROUPS_LIST" | "CAP_IAM_GROUPS_DELETE" | "CAP_IAM_GROUP_INVITES_CREATE" | "CAP_IAM_GROUP_INVITES_LIST" | "CAP_IAM_GROUP_INVITES_DELETE" | "CAP_IAM_ROLES_CREATE" | "CAP_IAM_ROLES_UPDATE" | "CAP_IAM_ROLES_LIST" | "CAP_IAM_ROLES_DELETE" | "CAP_IAM_ROLE_BINDINGS_CREATE" | "CAP_IAM_ROLE_BINDINGS_UPDATE" | "CAP_IAM_ROLE_BINDINGS_LIST" | "CAP_IAM_ROLE_BINDINGS_DELETE" | "CAP_TENANT_CLUSTERS_CREATE" | "CAP_TENANT_CLUSTERS_UPDATE" | "CAP_TENANT_CLUSTERS_LIST" | "CAP_TENANT_CLUSTERS_DELETE" | "CAP_TENANT_CLUSTERS_DISCOVER" | "CAP_TENANT_RECORDS_LIST" | "CAP_TENANT_RECORD_CONTEXTS_LIST" | "CAP_TENANT_RECORD_SIGNATURES_LIST" | "CAP_TENANT_RECORD_POLICY_RESULTS_LIST" | "CAP_TENANT_RISKS_LIST" | "CAP_TENANT_SBOMS_LIST" | "CAP_TENANT_VULN_REPORTS_LIST" | "CAP_TENANT_ATTESTATIONS_LIST" | "CAP_IAM_ACCOUNT_ASSOCIATIONS_CREATE" | "CAP_IAM_ACCOUNT_ASSOCIATIONS_UPDATE" | "CAP_IAM_ACCOUNT_ASSOCIATIONS_LIST" | "CAP_IAM_ACCOUNT_ASSOCIATIONS_DELETE" | "CAP_IAM_POLICY_CREATE" | "CAP_IAM_POLICY_UPDATE" | "CAP_IAM_POLICY_LIST" | "CAP_IAM_POLICY_DELETE" | "CAP_IAM_IDENTITY_CREATE" | "CAP_IAM_IDENTITY_UPDATE" | "CAP_IAM_IDENTITY_LIST" | "CAP_IAM_IDENTITY_DELETE" | "CAP_TENANT_NODES_LIST" | "CAP_TENANT_NAMESPACES_LIST" | "CAP_TENANT_WORKLOADS_LIST" | "CAP_IAM_IDENTITY_PROVIDERS_CREATE" | "CAP_IAM_IDENTITY_PROVIDERS_UPDATE" | "CAP_IAM_IDENTITY_PROVIDERS_LIST" | "CAP_IAM_IDENTITY_PROVIDERS_DELETE" | "CAP_EVENTS_SUBSCRIPTION_CREATE" | "CAP_EVENTS_SUBSCRIPTION_UPDATE" | "CAP_EVENTS_SUBSCRIPTION_LIST" | "CAP_EVENTS_SUBSCRIPTION_DELETE" | "CAP_REPO_BLOBS_GET" | "CAP_REPO_CREATE" | "CAP_REPO_UPDATE" | "CAP_REPO_LIST" | "CAP_REPO_DELETE" | "CAP_MANIFEST_CREATE" | "CAP_MANIFEST_UPDATE" | "CAP_MANIFEST_LIST" | "CAP_MANIFEST_DELETE" | "CAP_TAG_CREATE" | "CAP_TAG_UPDATE" | "CAP_TAG_LIST" | "CAP_TAG_DELETE" | "CAP_MANIFEST_METADATA_LIST" | "CAP_REFERRERS_LIST" | "CAP_REPO_INTERNAL_ADMIN" | "CAP_APK_BLOBS_GET" | "CAP_APK_CREATE" | "CAP_APK_UPDATE" | "CAP_APK_LIST" | "CAP_APK_DELETE" | "CAP_VERSION_LIST" | "CAP_VULN_REPORT_CREATE" | "CAP_VULN_REPORT_LIST" | "CAP_VULN_CREATE" | "CAP_BUILD_REPORT_LIST" | "CAP_LIBRARIES_ENTITLEMENTS_CREATE" | "CAP_LIBRARIES_ENTITLEMENTS_LIST" | "CAP_LIBRARIES_ENTITLEMENTS_DELETE" | "CAP_LIBRARIES_ARTIFACTS_LIST" | "CAP_LIBRARIES_PYTHON_LIST" | "CAP_LIBRARIES_PYTHON_CREATE" | "CAP_LIBRARIES_JAVA_LIST" | "CAP_LIBRARIES_JAVA_CREATE" | "CAP_LIBRARIES_JAVASCRIPT_LIST" | "CAP_LIBRARIES_JAVASCRIPT_CREATE" | "CAP_LIBRARIES_CACHE_INVALIDATE" | "CAP_LIBRARIES_REBUILDER_REQUESTS_CREATE" | "CAP_LIBRARIES_REBUILDER_REQUESTS_LIST" | "CAP_LIBRARIES_REBUILDER_REQUESTS_CANCEL" | "CAP_LIBRARIES_REBUILDER_REQUESTS_GROUP_UPDATE" | "CAP_LIBRARIES_REBUILDER_ARTIFACTS_INVALIDATE" | "CAP_LIBRARIES_REBUILDER_EXCLUSIONS_MANAGE" | "CAP_LIBRARIES_REBUILDER_BUILDS_READ" | "CAP_LIBRARIES_REBUILDER_BUILDS_TOKENS_FETCH" | "CAP_LIBRARIES_REBUILDER_BUILDS_UNTRUSTED" | "CAP_LIBRARIES_REBUILDER_REMEDIATED_ARTIFACTS_READ" | "CAP_LIBRARIES_REBUILDER_NEW_VERSIONS_READ" | "CAP_LIBRARIES_REBUILDER_NEW_VERSIONS_REFRESH" | "CAP_LIBRARIES_REBUILDER_MALWARE_STATUS_READ" | "CAP_LIBRARIES_AWS_MARKETPLACE_SUBSCRIPTIONS_CREATE" | "CAP_LIBRARIES_AWS_MARKETPLACE_SUBSCRIPTIONS_UPDATE" | "CAP_LIBRARIES_AWS_MARKETPLACE_SUBSCRIPTIONS_LIST" | "CAP_REGISTRY_ENTITLEMENTS_LIST" | "CAP_REGISTRY_ENTITLEMENTS_CREATE" | "CAP_REGISTRY_ENTITLEMENTS_DELETE" | "CAP_REGISTRY_ENTITLEMENTS_IMAGES_ADD" | "CAP_REGISTRY_ENTITLEMENTS_IMAGES_REMOVE" | "CAP_REGISTRY_SETTINGS_LIST" | "CAP_REGISTRY_SETTINGS_UPDATE" | "CAP_SIGSTORE_CREATE" | "CAP_SIGSTORE_UPDATE" | "CAP_SIGSTORE_LIST" | "CAP_SIGSTORE_DELETE" | "CAP_SIGSTORE_CERTIFICATE_CREATE" | "CAP_ADVISORIES_CREATE" | "CAP_ADVISORIES_UPDATE" | "CAP_ADVISORIES_LIST" | "CAP_ADVISORIES_DELETE" | "CAP_ADVISORIES_APPROVE" | "CAP_REGISTRY_DEPLOYMENTS_CREATE" | "CAP_REGISTRY_DEPLOYMENTS_UPDATE" | "CAP_REGISTRY_DEPLOYMENTS_LIST" | "CAP_POLICIES_POLICY_CREATE" | "CAP_POLICIES_POLICY_UPDATE" | "CAP_POLICIES_POLICY_LIST" | "CAP_POLICIES_POLICY_DELETE" | "CAP_POLICIES_BINDING_CREATE" | "CAP_POLICIES_BINDING_UPDATE" | "CAP_POLICIES_BINDING_LIST" | "CAP_POLICIES_BINDING_DELETE" | "CAP_POLICIES_DECISION_LIST" | "CAP_POLICIES_OVERRIDE_CREATE" | "CAP_POLICIES_OVERRIDE_LIST" | "CAP_POLICIES_OVERRIDE_DELETE" | "CAP_REPO_CHECK_POLICIES" | "CAP_PACKAGES_ENTITLEMENTS_LIST" | "CAP_TERMS_ACCEPT" | "CAP_TERMS_LIST" | "CAP_GULFSTREAM" | "CAP_GUARDENER_DFC_CONVERT" | "CAP_GUARDENER_ASSOCIATION_MANAGE" | "CAP_MCP_TOOL_CALL" | "CAP_SKILLS_PUBLISH" | "CAP_SKILLS_ENTITLEMENTS_CREATE" | "CAP_SKILLS_ENTITLEMENTS_LIST" | "CAP_SKILLS_ENTITLEMENTS_DELETE" | "CAP_ARGOS_DOCUMENTS_CREATE" | "CAP_ARGOS_DOCUMENTS_LIST" | "CAP_ARGOS_DOCUMENTS_DELETE" | "CAP_ARGOS_OSV_READ" | "CAP_LIBRARIES_POLICY_CREATE" | "CAP_LIBRARIES_POLICY_UPDATE" | "CAP_LIBRARIES_POLICY_LIST" | "CAP_LIBRARIES_POLICY_DELETE" | "CAP_LIBRARIES_POLICY_BINDING_CREATE" | "CAP_LIBRARIES_POLICY_BINDING_UPDATE" | "CAP_LIBRARIES_POLICY_BINDING_LIST" | "CAP_LIBRARIES_POLICY_BINDING_DELETE" | "CAP_LIBRARIES_POLICY_BLOCK_EVENT_LIST" | "CAP_BUILDAPI_BUILD_CREATE" | "CAP_BUILDAPI_BUILD_LIST" | "CAP_BUILDAPI_WORKER_SYNC" | "CAP_BUILDAPI_BUILD_CANCEL" | "CAP_CASSIE_CAS_READ" | "CAP_CASSIE_CAS_WRITE" | "CAP_CASSIE_AC_READ" | "CAP_CASSIE_AC_WRITE" | "CAP_ACTIONS_LIST";
         "chainguard.platform.auth.HeadlessSession": {
             /**
              * Format: byte
@@ -999,6 +1393,13 @@ export interface components {
              *     Generated by server.
              */
             readonly uid?: string;
+        };
+        /** @description AcceptTermsResponse is the response message for AcceptTerms. */
+        "chainguard.platform.iam.v2beta1.AcceptTermsResponse": {
+            /** @description IDs of the documents that were accepted. */
+            readonly documentIds?: string[];
+            /** @description Group UIDP that accepted the documents. */
+            readonly group?: string;
         };
         /** @description AccountAssociation represents cloud provider account associations for a group. */
         "chainguard.platform.iam.v2beta1.AccountAssociation": {
@@ -1087,6 +1488,127 @@ export interface components {
             projectId: string;
             /** @description GCP project number. */
             projectNumber: string;
+        };
+        /** @description CheckAccountAssociationRequest is the request for CheckAccountAssociation. */
+        "chainguard.platform.iam.v2beta1.AccountAssociationsService.CheckAccountAssociationBody": {
+            /** @description The cloud provider type to check. */
+            providerType: components["schemas"]["chainguard.platform.iam.v2beta1.AccountProviderType"];
+        };
+        /**
+         * @description AccountProviderType identifies a cloud provider for account association checks.
+         *
+         *      - ACCOUNT_PROVIDER_TYPE_UNSPECIFIED: Unspecified provider type.
+         *      - ACCOUNT_PROVIDER_TYPE_GOOGLE: Google Cloud Platform.
+         *      - ACCOUNT_PROVIDER_TYPE_AMAZON: Amazon Web Services.
+         *      - ACCOUNT_PROVIDER_TYPE_AZURE: Microsoft Azure.
+         * @default ACCOUNT_PROVIDER_TYPE_UNSPECIFIED
+         * @enum {string}
+         */
+        "chainguard.platform.iam.v2beta1.AccountProviderType": "ACCOUNT_PROVIDER_TYPE_UNSPECIFIED" | "ACCOUNT_PROVIDER_TYPE_GOOGLE" | "ACCOUNT_PROVIDER_TYPE_AMAZON" | "ACCOUNT_PROVIDER_TYPE_AZURE";
+        /** @description BatchCreateRoleBindingsRequest is the request for BatchCreateRoleBindings. */
+        "chainguard.platform.iam.v2beta1.BatchCreateRoleBindingsRequest": {
+            /** @description Parent group UIDP under which all bindings will be created. */
+            parent: string;
+            /**
+             * @description The role bindings to create. Each must specify identity_uid and role_uid.
+             *     A maximum of 25 requests can be created in a batch.
+             */
+            requests: components["schemas"]["chainguard.platform.iam.v2beta1.CreateRoleBindingRequest"][];
+            /**
+             * @description Optional role UID applied to all sub-requests that do not specify their own
+             *     role_uid. When set, sub-requests may omit role_uid and it will be inherited
+             *     from this field. If a sub-request specifies a different role_uid, the request
+             *     fails with INVALID_ARGUMENT (conflict detection per AIP-233).
+             */
+            roleUid?: string;
+        };
+        /** @description BatchCreateRoleBindingsResponse is the response for BatchCreateRoleBindings. */
+        "chainguard.platform.iam.v2beta1.BatchCreateRoleBindingsResponse": {
+            /** @description The created role bindings, in the same order as the requests. */
+            roleBindings?: components["schemas"]["chainguard.platform.iam.v2beta1.RoleBinding"][];
+        };
+        /** @description BatchDeleteExternalGroupRoleMappingsRequest is the request message for BatchDeleteExternalGroupRoleMappings. */
+        "chainguard.platform.iam.v2beta1.BatchDeleteExternalGroupRoleMappingsRequest": {
+            /**
+             * @description UIDs of the mappings to delete. Names that no longer exist under parent are
+             *     silently skipped; names whose parent differs from parent return
+             *     INVALID_ARGUMENT.
+             */
+            names: string[];
+            /**
+             * @description UID of the identity provider the mappings belong to. Every name must be one
+             *     of its mappings.
+             */
+            parent: string;
+        };
+        /** @description BatchDeleteExternalGroupRoleMappingsResponse is the response message for BatchDeleteExternalGroupRoleMappings. */
+        "chainguard.platform.iam.v2beta1.BatchDeleteExternalGroupRoleMappingsResponse": {
+            /** @description The mappings that were deleted. */
+            externalGroupRoleMappings?: components["schemas"]["chainguard.platform.iam.v2beta1.ExternalGroupRoleMapping"][];
+            /**
+             * @description UID of the identity provider the delete targeted. Echoed so the operation can
+             *     be attributed even when no mappings matched.
+             */
+            parent?: string;
+        };
+        /** @description CheckAccountAssociationResponse is the response for CheckAccountAssociation. */
+        "chainguard.platform.iam.v2beta1.CheckAccountAssociationResponse": {
+            /** @description Detailed error message, if any. */
+            message?: string;
+            /** @description Human-readable reason code (e.g., "not configured", "error exchanging credentials"). */
+            reason?: string;
+            /** @description Whether the association is ready. */
+            status?: components["schemas"]["chainguard.platform.iam.v2beta1.CheckStatus"];
+        };
+        /** @description CheckEligibilityResponse is the response message for CheckEligibility. */
+        "chainguard.platform.iam.v2beta1.CheckEligibilityResponse": {
+            /**
+             * @description Indicates if the domain of the caller's email address is eligible
+             *     for email-domain-gated Groups flows.
+             */
+            eligible?: boolean;
+        };
+        /**
+         * @description CheckStatus indicates the readiness state of an account association check.
+         *
+         *      - CHECK_STATUS_UNSPECIFIED: Unspecified check status.
+         *      - CHECK_STATUS_READY: The account association is correctly configured and credentials can be exchanged.
+         *      - CHECK_STATUS_NOT_READY: The account association is not ready (misconfigured, missing, or credential exchange failed).
+         * @default CHECK_STATUS_UNSPECIFIED
+         * @enum {string}
+         */
+        "chainguard.platform.iam.v2beta1.CheckStatus": "CHECK_STATUS_UNSPECIFIED" | "CHECK_STATUS_READY" | "CHECK_STATUS_NOT_READY";
+        /** @description CreateRoleBindingRequest is the request message for CreateRoleBinding. */
+        "chainguard.platform.iam.v2beta1.CreateRoleBindingRequest": {
+            /** @description Parent group UIDP where the role binding will be created. */
+            parent: string;
+            /**
+             * @description The role binding to create.
+             *     Set identity_uid and role_uid; other fields are ignored.
+             */
+            roleBinding: components["schemas"]["chainguard.platform.iam.v2beta1.RoleBinding"];
+        };
+        /**
+         * @description ExternalGroupRoleMapping maps an external identity provider group to a Chainguard role.
+         *     When a user authenticates via SSO and their token includes the mapped group,
+         *     the federation flow grants the mapped role's capabilities at the specified scope.
+         */
+        "chainguard.platform.iam.v2beta1.ExternalGroupRoleMapping": {
+            /**
+             * Format: date-time
+             * @description When the mapping was created.
+             */
+            readonly createTime?: string;
+            /** @description The external identity provider's opaque group identifier (e.g. OIDC group claim value). */
+            externalGroupId?: string;
+            /** @description UIDP of the parent identity provider. */
+            readonly identityProviderUid?: string;
+            /** @description UIDP of the Chainguard role to grant to members of the external group. */
+            roleUid?: string;
+            /** @description UIDP of the Chainguard group where the role applies (currently constrained to org root). */
+            scope?: string;
+            /** @description Unique identifier for the mapping (UIDP rooted under the identity provider). */
+            readonly uid?: string;
         };
         /** @description Group represents an IAM group (organization or folder). */
         "chainguard.platform.iam.v2beta1.Group": {
@@ -1222,8 +1744,6 @@ export interface components {
              *     Must be 3-63 characters.
              */
             name: string;
-            /** @description Cloud provider names associated with the identity. */
-            providers?: string[];
             /** @description Chainguard service principal. */
             servicePrincipal?: components["schemas"]["chainguard.platform.iam.v2beta1.ServicePrincipal"];
             /** @description Static OIDC keys configuration. */
@@ -1303,6 +1823,51 @@ export interface components {
             subject: string;
         };
         /**
+         * @description IdentityMetadata contains profile and onboarding metadata for the
+         *     caller's identity. OUTPUT_ONLY fields are populated by the server;
+         *     all other fields are caller-provided and passed through the emitted
+         *     CloudEvent for downstream consumers (e.g. HubSpot sync).
+         */
+        "chainguard.platform.iam.v2beta1.IdentityMetadata": {
+            /** @description The company name associated with the identity. */
+            company?: string;
+            /** @description The caller's family name (derived from display name). */
+            readonly familyName?: string;
+            /** @description The caller's given name (derived from display name). */
+            readonly givenName?: string;
+            /**
+             * @description The HubSpot UTK value to pass to HubSpot during console login.
+             *     This value is ephemeral and not persisted to datastore.
+             */
+            hubspotUtk?: string;
+            /** @description The user's job title. */
+            jobTitle?: string;
+            /** @description The URL of the latest form submission. */
+            latestFormSubmitUrl?: string;
+            /** @description The URL of the latest internal referring page. */
+            latestInternalReferringUrl?: string;
+            /** @description The caller's display name (from upstream OIDC token). */
+            readonly name?: string;
+            /** @description The product the user is interested in. */
+            product?: string;
+            /** @description Flag to indicate if the user is onboarding via a self-service flow. */
+            selfServe?: boolean;
+            /** @description The caller's identity UID. */
+            readonly uid?: string;
+            /** @description Whether the user has opted to receive updates from Chainguard. */
+            updatesOptIn?: boolean;
+            /** @description UTM campaign tracking parameter. */
+            utmCampaign?: string;
+            /** @description UTM content tracking parameter. */
+            utmContent?: string;
+            /** @description UTM medium tracking parameter. */
+            utmMedium?: string;
+            /** @description UTM source tracking parameter. */
+            utmSource?: string;
+            /** @description UTM term tracking parameter. */
+            utmTerm?: string;
+        };
+        /**
          * @description IdentityProvider represents the configuration parameters necessary for performing
          *     authentication with an upstream identity provider.
          */
@@ -1328,6 +1893,15 @@ export interface components {
             /** @description Defines the parameters necessary for authenticating with the OIDC flow. */
             oidc?: components["schemas"]["chainguard.platform.iam.v2beta1.IdentityProvider.OIDC"];
             /**
+             * @description SCIM provisioning configuration for this identity provider.
+             *
+             *     SCIM is a provisioning protocol and is independent of the authentication
+             *     mechanism in `configuration`: an identity provider may use OIDC for
+             *     authentication and SCIM for provisioning at the same time. It is therefore
+             *     a top-level field rather than a member of the `configuration` oneof.
+             */
+            scim?: components["schemas"]["chainguard.platform.iam.v2beta1.IdentityProvider.SCIM"];
+            /**
              * @description Unique identifier for the identity provider (UIDP).
              *     Generated by server.
              */
@@ -1352,8 +1926,30 @@ export interface components {
              *     and is not returned for list/get calls.
              */
             clientSecret: string;
+            /**
+             * @description Name of the OIDC token claim that carries the user's group memberships
+             *     (e.g. "groups" for Entra, a custom claim name for Okta). Required for
+             *     IdP group-based role mapping; when empty, group extraction is skipped.
+             */
+            groupsClaim?: string;
             /** Issuer URL (e.g https://accounts.google.com) */
             issuer: string;
+        };
+        /**
+         * @description SCIM holds the System for Cross-domain Identity Management provisioning
+         *     configuration for an identity provider.
+         */
+        "chainguard.platform.iam.v2beta1.IdentityProvider.SCIM": {
+            /** @description Whether SCIM provisioning is enabled for this identity provider. */
+            enabled?: boolean;
+            /**
+             * @description Server-derived SCIM endpoint URL for this identity provider, computed
+             *     from the identity provider UIDP. Not user-configurable. OUTPUT_ONLY:
+             *     the persistence layer must strip this before writing, since an
+             *     implied/inferred field mask does not exclude OUTPUT_ONLY paths
+             *     (enforcement lands with SCIM config persistence, CUS-450).
+             */
+            readonly endpointUrl?: string;
         };
         /** @description ListAccountAssociationsResponse is the response message for ListAccountAssociations. */
         "chainguard.platform.iam.v2beta1.ListAccountAssociationsResponse": {
@@ -1374,6 +1970,23 @@ export interface components {
              * Format: int64
              * @description Total number of account associations matching the filter.
              *     Optional, provided for UI pagination.
+             */
+            totalCount?: string;
+        };
+        /** @description ListExternalGroupRoleMappingsResponse is the response message for ListExternalGroupRoleMappings. */
+        "chainguard.platform.iam.v2beta1.ListExternalGroupRoleMappingsResponse": {
+            /** @description Mappings matching the filter criteria. */
+            externalGroupRoleMappings?: components["schemas"]["chainguard.platform.iam.v2beta1.ExternalGroupRoleMapping"][];
+            /** @description Token for retrieving the next page of results. */
+            nextPageToken?: string;
+            /**
+             * Format: int32
+             * @description Number of results that were skipped.
+             */
+            skipped?: number;
+            /**
+             * Format: int64
+             * @description Total number of mappings matching the filter.
              */
             totalCount?: string;
         };
@@ -1509,10 +2122,36 @@ export interface components {
              */
             totalCount?: string;
         };
+        /** @description ListTermsAcceptancesResponse is the response message for ListTermsAcceptances. */
+        "chainguard.platform.iam.v2beta1.ListTermsAcceptancesResponse": {
+            /** @description Token for retrieving the next page of results. */
+            nextPageToken?: string;
+            /**
+             * Format: int32
+             * @description Number of results that were skipped.
+             */
+            skipped?: number;
+            /** @description Terms acceptances matching the request criteria. */
+            termsAcceptances?: components["schemas"]["chainguard.platform.iam.v2beta1.TermsAcceptance"][];
+            /**
+             * Format: int64
+             * @description Total number of terms acceptances matching the filter.
+             */
+            totalCount?: string;
+        };
         /** @description LookupGroupResponse is the response message for LookupGroup. */
         "chainguard.platform.iam.v2beta1.LookupGroupResponse": {
             /** @description The group matching the caller's email domain from their token. */
             group?: components["schemas"]["chainguard.platform.iam.v2beta1.Group"];
+        };
+        /** @description LookupIdentityResponse is the response for LookupIdentity. */
+        "chainguard.platform.iam.v2beta1.LookupIdentityResponse": {
+            /**
+             * @description The Chainguard identity UID matching the issuer/subject.
+             *     If no identity exists yet, this is the deterministic UID
+             *     the identity will receive upon future registration.
+             */
+            readonly uid?: string;
         };
         /**
          * @description OrgKind is the kind of organization the group belongs to.
@@ -1522,10 +2161,12 @@ export interface components {
          *      - ORG_KIND_CUSTOMER: Paid customer organizations.
          *      - ORG_KIND_DEV: Personal developer organizations.
          *      - ORG_KIND_INFRA: Organizations that are used for infrastructure or automation.
+         *      - ORG_KIND_AWS_MARKETPLACE: Organizations that are created via AWS Marketplace Subscriptions.
+         *     Orgs can move from this kind to CUSTOMER upon up-sell.
          * @default ORG_KIND_UNSPECIFIED
          * @enum {string}
          */
-        "chainguard.platform.iam.v2beta1.OrgKind": "ORG_KIND_UNSPECIFIED" | "ORG_KIND_STARTER" | "ORG_KIND_CUSTOMER" | "ORG_KIND_DEV" | "ORG_KIND_INFRA";
+        "chainguard.platform.iam.v2beta1.OrgKind": "ORG_KIND_UNSPECIFIED" | "ORG_KIND_STARTER" | "ORG_KIND_CUSTOMER" | "ORG_KIND_DEV" | "ORG_KIND_INFRA" | "ORG_KIND_AWS_MARKETPLACE";
         /**
          * @description OrgStatus is the provisioning status of an organization.
          *
@@ -1665,10 +2306,164 @@ export interface components {
          *      - SERVICE_PRINCIPAL_SEDIMENTOLOGY: Sedimentology service for data analysis.
          *      - SERVICE_PRINCIPAL_SKILLUP: Skillup service for fixing repository skill violations.
          *      - SERVICE_PRINCIPAL_MATERIALIZER: Materializer service for materializing solutions from problem statements.
+         *      - SERVICE_PRINCIPAL_MICROFLOW: Microflow service for running a pull request's committed CI workflows in microVMs.
          * @default SERVICE_PRINCIPAL_UNSPECIFIED
          * @enum {string}
          */
-        "chainguard.platform.iam.v2beta1.ServicePrincipal": "SERVICE_PRINCIPAL_UNSPECIFIED" | "SERVICE_PRINCIPAL_COSIGNED" | "SERVICE_PRINCIPAL_INGESTER" | "SERVICE_PRINCIPAL_CATALOG_SYNCER" | "SERVICE_PRINCIPAL_APKO_BUILDER" | "SERVICE_PRINCIPAL_ENTITLEMENT_SYNCER" | "SERVICE_PRINCIPAL_TENANT_SCANNER" | "SERVICE_PRINCIPAL_SEDIMENTOLOGY" | "SERVICE_PRINCIPAL_SKILLUP" | "SERVICE_PRINCIPAL_MATERIALIZER";
+        "chainguard.platform.iam.v2beta1.ServicePrincipal": "SERVICE_PRINCIPAL_UNSPECIFIED" | "SERVICE_PRINCIPAL_COSIGNED" | "SERVICE_PRINCIPAL_INGESTER" | "SERVICE_PRINCIPAL_CATALOG_SYNCER" | "SERVICE_PRINCIPAL_APKO_BUILDER" | "SERVICE_PRINCIPAL_ENTITLEMENT_SYNCER" | "SERVICE_PRINCIPAL_TENANT_SCANNER" | "SERVICE_PRINCIPAL_SEDIMENTOLOGY" | "SERVICE_PRINCIPAL_SKILLUP" | "SERVICE_PRINCIPAL_MATERIALIZER" | "SERVICE_PRINCIPAL_MICROFLOW";
+        /** @description TermsAcceptance records an acceptance event for a single legal document. */
+        "chainguard.platform.iam.v2beta1.TermsAcceptance": {
+            /** @description Identity (subject) that accepted the document. */
+            readonly acceptedBy?: string;
+            /**
+             * Format: date-time
+             * @description When the document was accepted.
+             */
+            readonly createTime?: string;
+            /** @description Stable identifier for the accepted document. */
+            readonly docId?: string;
+            /** @description Organization UIDP where the document was accepted. */
+            readonly orgUid?: string;
+        };
+        /** @description AcceptTermsRequest is the request message for AcceptTerms. */
+        "chainguard.platform.iam.v2beta1.TermsService.AcceptTermsBody": {
+            /** @description IDs of the legal documents being accepted. */
+            documentIds: string[];
+        };
+        /** @description UpdateIdentityMetadataRequest is the request for UpdateIdentityMetadata. */
+        "chainguard.platform.iam.v2beta1.UpdateIdentityMetadataRequest": {
+            /** @description The metadata to update. */
+            identityMetadata: components["schemas"]["chainguard.platform.iam.v2beta1.IdentityMetadata"];
+            /**
+             * @description The list of fields to update. If not provided, an implied field mask
+             *     is used equivalent to all populated fields. * is supported over gRPC
+             *     and interpreted as a full replacement with the given field values.
+             */
+            updateMask?: string;
+        };
+        /** @description Artifact contains metadata about a software artifact in a language ecosystem. */
+        "chainguard.platform.libraries.v2beta1.Artifact": {
+            /**
+             * Format: date-time
+             * @description When the first version was published to Chainguard Libraries.
+             */
+            readonly createTime?: string;
+            /** @description The description of the most recent version of this artifact. */
+            readonly description?: string;
+            /** @description The language ecosystem this artifact belongs to. */
+            readonly ecosystem?: components["schemas"]["chainguard.platform.libraries.v2beta1.Ecosystem"];
+            /** @description The most recent version of this artifact available. */
+            readonly latestVersion?: string;
+            /** @description The artifact name. */
+            readonly name?: string;
+            /** @description Unique identifier for the artifact, based on the ecosystem it belongs to. */
+            readonly uid?: string;
+            /**
+             * Format: date-time
+             * @description When the most recent version was published to Chainguard Libraries.
+             */
+            readonly updateTime?: string;
+            /**
+             * Format: int32
+             * @description The number of versions available for this artifact.
+             */
+            readonly versionCount?: number;
+        };
+        /** @description ArtifactVersion contains metadata about a specific version of an artifact. */
+        "chainguard.platform.libraries.v2beta1.ArtifactVersion": {
+            /**
+             * Format: date-time
+             * @description When this version was first published to Chainguard Libraries.
+             */
+            readonly createTime?: string;
+            /** @description A long form description of this version of the artifact. */
+            readonly description?: string;
+            /** @description The name of the artifact. */
+            readonly name?: string;
+            /**
+             * Format: int64
+             * @description The estimated size of this artifact in bytes.
+             */
+            readonly sizeBytes?: string;
+            /** @description Unique identifier for this version of the artifact. */
+            readonly uid?: string;
+            /**
+             * Format: date-time
+             * @description When this version was last published to Chainguard Libraries.
+             */
+            readonly updateTime?: string;
+            /** @description The version string of this artifact. */
+            readonly version?: string;
+        };
+        /**
+         * @description Ecosystem represents the language ecosystem an artifact belongs to.
+         *
+         *      - ECOSYSTEM_UNSPECIFIED: Unspecified ecosystem.
+         *      - ECOSYSTEM_JAVA: Java ecosystem (Maven).
+         *      - ECOSYSTEM_PYTHON: Python ecosystem (PyPI).
+         * @default ECOSYSTEM_UNSPECIFIED
+         * @enum {string}
+         */
+        "chainguard.platform.libraries.v2beta1.Ecosystem": "ECOSYSTEM_UNSPECIFIED" | "ECOSYSTEM_JAVA" | "ECOSYSTEM_PYTHON";
+        /** @description GetArtifactCountResponse is the response message for GetArtifactCount. */
+        "chainguard.platform.libraries.v2beta1.GetArtifactCountResponse": {
+            /** @description Counts for each requested ecosystem. */
+            counts?: components["schemas"]["chainguard.platform.libraries.v2beta1.GetArtifactCountResponse.EcosystemCount"][];
+        };
+        /** @description EcosystemCount represents the total number of artifacts for a given ecosystem. */
+        "chainguard.platform.libraries.v2beta1.GetArtifactCountResponse.EcosystemCount": {
+            /** @description The ecosystem. */
+            ecosystem?: components["schemas"]["chainguard.platform.libraries.v2beta1.Ecosystem"];
+            /**
+             * Format: int64
+             * @description Total number of artifacts for this ecosystem.
+             */
+            totalCount?: string;
+        };
+        /** @description ListArtifactVersionsResponse is the response message for ListArtifactVersions. */
+        "chainguard.platform.libraries.v2beta1.ListArtifactVersionsResponse": {
+            /** @description Versions of the artifact. */
+            artifactVersions?: components["schemas"]["chainguard.platform.libraries.v2beta1.ArtifactVersion"][];
+            /**
+             * @description Token for retrieving the next page of results.
+             *     Empty if no more results.
+             */
+            nextPageToken?: string;
+            /**
+             * Format: int32
+             * @description Number of results that were skipped.
+             *     Accumulates across paginated requests.
+             */
+            skipped?: number;
+            /**
+             * Format: int64
+             * @description Total number of versions for this artifact.
+             *     Provided for UI pagination.
+             */
+            totalCount?: string;
+        };
+        /** @description ListArtifactsResponse is the response message for ListArtifacts. */
+        "chainguard.platform.libraries.v2beta1.ListArtifactsResponse": {
+            /** @description Artifacts matching the filter criteria. */
+            artifacts?: components["schemas"]["chainguard.platform.libraries.v2beta1.Artifact"][];
+            /**
+             * @description Token for retrieving the next page of results.
+             *     Empty if no more results.
+             */
+            nextPageToken?: string;
+            /**
+             * Format: int32
+             * @description Number of results that were skipped.
+             *     Accumulates across paginated requests.
+             */
+            skipped?: number;
+            /**
+             * Format: int64
+             * @description Total number of artifacts matching the filter.
+             *     Provided for UI pagination.
+             */
+            totalCount?: string;
+        };
         "chainguard.platform.oidc.RawToken": {
             /**
              * Format: date-time
@@ -1691,6 +2486,11 @@ export interface components {
             /** @description Server response message. */
             response?: string;
         };
+        /** @description Architectures contains the architectures present in an OCI index manifest. */
+        "chainguard.platform.registry.v2beta1.Architectures": {
+            /** @description Architecture names (e.g., "amd64", "arm64"). */
+            architectures?: string[];
+        };
         /**
          * @description CatalogTier represents the catalog tier classification for repositories.
          *
@@ -1705,20 +2505,30 @@ export interface components {
          * @enum {string}
          */
         "chainguard.platform.registry.v2beta1.CatalogTier": "CATALOG_TIER_UNSPECIFIED" | "CATALOG_TIER_APPLICATION" | "CATALOG_TIER_BASE" | "CATALOG_TIER_FIPS" | "CATALOG_TIER_AI" | "CATALOG_TIER_DEVTOOLS" | "CATALOG_TIER_COMMERCIAL";
-        /** @description CustomOverlay contains apko image configuration customizations. */
+        /**
+         * @description CustomOverlay contains apko image configuration customizations.
+         *     Can only be used on repositories with custom assembly enabled.
+         */
         "chainguard.platform.registry.v2beta1.CustomOverlay": {
             /** @description Account customizations applied during rebuilds. */
-            readonly accounts?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay.Accounts"];
-            /** @description OCI annotations to add to the image. */
-            readonly annotations?: {
+            accounts?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay.Accounts"];
+            /**
+             * @description OCI annotations to add to the image.
+             *     Keys with the reserved prefixes "dev.chainguard." and
+             *     "org.opencontainers." are rejected.
+             */
+            annotations?: {
                 [key: string]: string;
             };
             /** @description Custom certificates to include in the image. */
-            readonly certificates?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay.Certificates"];
+            certificates?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay.Certificates"];
             /** @description Additional packages to include in the image. */
-            readonly contents?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay.ImageContents"];
-            /** @description Environment variables to set in the image. */
-            readonly environment?: {
+            contents?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay.ImageContents"];
+            /**
+             * @description Environment variables to set in the image.
+             *     Keys with the reserved prefix "CHAINGUARD_" are rejected.
+             */
+            environment?: {
                 [key: string]: string;
             };
         };
@@ -1739,7 +2549,7 @@ export interface components {
              */
             gid?: number;
             /** @description Name of the group. */
-            groupname?: string;
+            groupname: string;
             /** @description Members of the group. */
             members?: string[];
         };
@@ -1762,26 +2572,32 @@ export interface components {
              */
             uid?: number;
             /** @description Username for the account. */
-            username?: string;
+            username: string;
         };
         /** @description Certificates specifies additional certificate configuration. */
         "chainguard.platform.registry.v2beta1.CustomOverlay.Certificates": {
             /** @description Additional certificates to include. */
             additional?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay.Certificates.AdditionalEntry"][];
-            /** @description Ceritificate providers via packages. */
+            /** @description Certificate providers via packages. */
             providers?: string[];
         };
         /** @description AdditionalEntry represents a single certificate. */
         "chainguard.platform.registry.v2beta1.CustomOverlay.Certificates.AdditionalEntry": {
             /** @description PEM-encoded certificate content. */
-            content?: string;
+            content: string;
             /** @description Name of the certificate file. */
-            name?: string;
+            name: string;
         };
         /** @description ImageContents specifies additional image content. */
         "chainguard.platform.registry.v2beta1.CustomOverlay.ImageContents": {
             /** @description Packages to append to the image. */
             packages?: string[];
+            /**
+             * @description Custom APK repository URLs to write to /etc/apk/repositories in the
+             *     assembled image. When set, these replace the default virtualapk.cgr.dev
+             *     repositories.
+             */
+            runtimeRepositories?: string[];
         };
         /** @description ListReposResponse is the response message for ListRepos. */
         "chainguard.platform.registry.v2beta1.ListReposResponse": {
@@ -1829,29 +2645,54 @@ export interface components {
         };
         /** @description Repo represents a container image repository. */
         "chainguard.platform.registry.v2beta1.Repo": {
-            /** @description Actively maintained tags in this repository. */
+            /**
+             * @description Actively maintained tags in this repository.
+             *     For repositories that sync from another repository, these are synced from
+             *     that repository.
+             */
             readonly activeTags?: string[];
-            /** @description List of equivalent image names/aliases. */
+            /**
+             * @description List of equivalent image names/aliases.
+             *     For repositories that sync from another repository, these are synced from
+             *     that repository.
+             */
             readonly aliases?: string[];
-            /** @description Sales grouping labels for the repository. */
+            /**
+             * @description Sales grouping labels for the repository.
+             *     For repositories that sync from another repository, these are synced from
+             *     that repository.
+             */
             readonly bundles?: string[];
-            /** @description Catalog tier this repository belongs to. */
+            /**
+             * @description Catalog tier this repository belongs to.
+             *     For repositories that sync from another repository, this is synced from
+             *     that repository.
+             */
             readonly catalogTier?: components["schemas"]["chainguard.platform.registry.v2beta1.CatalogTier"];
             /**
              * Format: date-time
              * @description When the repository was created.
              */
             readonly createTime?: string;
-            /** @description Custom apko image configuration overlay. */
-            readonly customOverlay?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay"];
-            /** @description Optional description of the repository. */
+            /**
+             * @description Custom apko image configuration overlay applied when images are rebuilt
+             *     for this repository. Can only be set on repositories with custom
+             *     assembly enabled.
+             */
+            customOverlay?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay"];
+            /**
+             * @description Optional description of the repository.
+             *     For repositories that sync from another repository, this defaults to that
+             *     repository's description.
+             */
             description?: string;
             /** @description Human-readable name of the repository. */
             name: string;
-            /** @description Raw Markdown content describing the repository. */
-            readonly readme?: string;
-            /** @description Repository sync configuration for image mirroring. */
-            readonly sync_config?: components["schemas"]["chainguard.platform.registry.v2beta1.SyncConfig"];
+            /**
+             * @description Repository sync configuration. If set, images and metadata are synced
+             *     from the source repository to this one.
+             */
+            sync_config?: components["schemas"]["chainguard.platform.registry.v2beta1.SyncConfig"];
             /**
              * @description Unique identifier for the repository (UIDP).
              *     Generated by server.
@@ -1863,26 +2704,57 @@ export interface components {
              */
             readonly updateTime?: string;
         };
+        /** @description Size contains the size of a container image for a specific architecture. */
+        "chainguard.platform.registry.v2beta1.Size": {
+            /** @description Architecture the size was computed for. */
+            architecture?: string;
+            /**
+             * Format: int64
+             * @description Total size in bytes (sum of all layers plus config).
+             */
+            size?: string;
+        };
         /** @description SyncConfig contains repository synchronization settings. */
         "chainguard.platform.registry.v2beta1.SyncConfig": {
-            /** @description AWS ECR destination repository. */
-            readonly amazon?: string;
-            /** @description Apko overlay configuration name. */
+            /** @description AWS ECR destination repository to additionally sync images to. */
+            amazon?: string;
+            /**
+             * @description Apko configuration overlay applied when rebuilding images during sync.
+             *     This field is managed by Chainguard.
+             */
             readonly apkoOverlay?: string;
-            /** @description Azure ACR destination repository. */
-            readonly azure?: string;
+            /** @description Azure ACR destination repository to additionally sync images to. */
+            azure?: string;
             /**
              * Format: date-time
-             * @description When the catalog syncer should stop syncing.
+             * @description When the catalog syncer should stop syncing from the source repository.
+             *     Defaults to 14 days from creation.
+             *     This field is managed by Chainguard.
              */
             readonly expirationTime?: string;
-            /** @description GCP Artifact Registry destination repository. */
-            readonly google?: string;
-            /** @description Whether EOL grace period is enabled. */
+            /**
+             * @description GCP Artifact Registry destination repository to additionally sync
+             *     images to.
+             */
+            google?: string;
+            /**
+             * @description Whether EOL grace period is enabled.
+             *     Determined by your organization's settings.
+             */
             readonly gracePeriod?: boolean;
-            /** @description Source repository UIDP to sync from. */
-            readonly source?: string;
-            /** @description Whether exported tags will be uniquely labeled. */
+            /**
+             * @description Source repository to sync from.
+             *     Accepts a repository UIDP, a catalog name (e.g. "chainguard/nginx"), or
+             *     a full image reference (e.g. "cgr.dev/chainguard/nginx"); always stored
+             *     and returned as a UIDP. The caller's organization must have an active
+             *     entitlement for the source repository, or the caller must have pull
+             *     access to it.
+             */
+            source: string;
+            /**
+             * @description Whether exported tags will be uniquely labeled.
+             *     Determined by your organization's settings.
+             */
             readonly uniqueTags?: boolean;
         };
         /** @description Tag is a container image tag that points to a specific digest of an image manifest. */
@@ -1937,6 +2809,11 @@ export interface components {
             events?: components["schemas"]["chainguard.platform.vulnerabilities.v2beta1.AdvisoryEvent"][];
             /** @description The advisory ID from the GitHub advisories repositories, if this advisory was migrated. */
             readonly legacyAdvisoryId?: string;
+            /**
+             * @description Severity scoring for the vulnerability associated with this advisory.
+             *     Sourced from vulnerability metadata (e.g., OSV) via the advisory's aliases.
+             */
+            readonly severities?: components["schemas"]["chainguard.platform.vulnerabilities.v2beta1.Severity"][];
             /** @description The unique identifier (UIDP) for the Advisory. */
             readonly uid?: string;
             /**
@@ -2009,6 +2886,8 @@ export interface components {
         };
         /** @description The vulnerability was detected by a scanner, with the given match data. */
         "chainguard.platform.vulnerabilities.v2beta1.AdvisoryEvent.Detection.ScanV1": {
+            /** @description The version of the artifact (origin package or subpackage) that was scanned when the vulnerability was detected. Pairs with the advisory's artifact_name. */
+            artifactVersion?: string;
             /** @description The name of the component within the subpackage the vulnerability was detected din. */
             component?: string;
             /** @description A scanner determined ID for the component the vulnerability was detected in. */
@@ -2019,8 +2898,14 @@ export interface components {
             componentType?: string;
             /** @description The version of the matched component. */
             componentVersion?: string;
+            /** @description The build timestamp (RFC 3339) of the grype vulnerability database used for this detection. */
+            grypeDbBuilt?: string;
+            /** @description The integrity checksum of the grype vulnerability database used for this detection. */
+            grypeDbChecksum?: string;
             /** @description The scanner that detected the vulnerability. */
             scanner?: string;
+            /** @description The version of the vulnerability scanner (grype) that produced this detection. */
+            scannerVersion?: string;
             /** @description The subpackage the vulnerability was detected in. Matches the artifact name of the advisory. */
             subpackage?: string;
         };
@@ -2092,8 +2977,14 @@ export interface components {
         "chainguard.platform.vulnerabilities.v2beta1.AdvisoryEvent.Fixed": {
             /** @description The first version of the artifact in which the vulnerability is considered fixed. */
             fixedVersion?: string;
+            /** @description The build timestamp (RFC 3339) of the grype vulnerability database used for this fixed determination. */
+            grypeDbBuilt?: string;
+            /** @description The integrity checksum of the grype vulnerability database used for this fixed determination. */
+            grypeDbChecksum?: string;
             /** @description Additional textual comments about the fix. */
             note?: string;
+            /** @description The version of the vulnerability scanner (grype) that produced this fixed determination. */
+            scannerVersion?: string;
         };
         /** @description The vulnerability has been patched at the given versions of the artifact. */
         "chainguard.platform.vulnerabilities.v2beta1.AdvisoryEvent.Patched": {
@@ -2144,6 +3035,24 @@ export interface components {
          * @enum {string}
          */
         "chainguard.platform.vulnerabilities.v2beta1.ReviewState": "REVIEW_STATE_UNSPECIFIED" | "REVIEW_STATE_PENDING" | "REVIEW_STATE_APPROVED" | "REVIEW_STATE_REQUEST_CHANGES" | "REVIEW_STATE_REJECTED";
+        /** @description Severity represents a quantitative severity scoring method for a vulnerability. */
+        "chainguard.platform.vulnerabilities.v2beta1.Severity": {
+            /** @description The score string (CVSS vector string or numeric value depending on type). */
+            score?: string;
+            /** @description The type of severity scoring method used. */
+            type?: components["schemas"]["chainguard.platform.vulnerabilities.v2beta1.Severity.Type"];
+        };
+        /**
+         * @description Type of severity scoring method.
+         *
+         *      - TYPE_UNSPECIFIED: Unspecified severity type.
+         *      - TYPE_CVSS_V2: CVSS version 2.
+         *      - TYPE_CVSS_V3: CVSS version 3.x.
+         *      - TYPE_CVSS_V4: CVSS version 4.x.
+         * @default TYPE_UNSPECIFIED
+         * @enum {string}
+         */
+        "chainguard.platform.vulnerabilities.v2beta1.Severity.Type": "TYPE_UNSPECIFIED" | "TYPE_CVSS_V2" | "TYPE_CVSS_V3" | "TYPE_CVSS_V4";
         "google.protobuf.Any": {
             "@type"?: string;
         } & {
@@ -2542,6 +3451,234 @@ export interface operations {
                 };
                 content: {
                     "application/json": Record<string, never>;
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    AccountAssociationsService_CheckAccountAssociation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description UID (group UIDP) of the account association to check. */
+                uid: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "*/*": components["schemas"]["chainguard.platform.iam.v2beta1.AccountAssociationsService.CheckAccountAssociationBody"];
+            };
+        };
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.CheckAccountAssociationResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ExternalGroupRoleMappingsService_ListExternalGroupRoleMappings: {
+        parameters: {
+            query?: {
+                /** @description ancestors_of are groups reachable by repeated proceeding from child to parent. */
+                "uidp.ancestorsOf"?: string;
+                /** @description descendants_of are groups reachable by repeated proceeding from parent to child. */
+                "uidp.descendantsOf"?: string;
+                /** @description children_of are groups reachable by directly proceeding from parent to children. */
+                "uidp.childrenOf"?: string;
+                /** @description in_root resticts responses to root level resources (organizations, user identities) */
+                "uidp.inRoot"?: boolean;
+                /** @description ids are a list of exact UIDPs of records. */
+                "uidp.ids"?: string[];
+                /** @description Filter by identity provider UID. */
+                identityProviderUid?: string;
+                /** @description Maximum number of results to return per page. */
+                pageSize?: number;
+                /** @description Page token from a previous List response for pagination. */
+                pageToken?: string;
+                /**
+                 * @description Order results by field. Format: "field [asc|desc]".
+                 *     Default: "uid asc".
+                 *     Note: Changing order_by between pages invalidates the page token.
+                 */
+                orderBy?: string;
+                /** @description Number of results to skip before returning. */
+                skip?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.ListExternalGroupRoleMappingsResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ExternalGroupRoleMappingsService_CreateExternalGroupRoleMapping: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Parent identity provider UIDP under which the mapping will be created. */
+                parent: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * @description The mapping to create.
+         *     Set external_group_id, role_uid, and scope.
+         */
+        requestBody: {
+            content: {
+                "*/*": components["schemas"]["chainguard.platform.iam.v2beta1.ExternalGroupRoleMapping"];
+            };
+        };
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.ExternalGroupRoleMapping"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ExternalGroupRoleMappingsService_GetExternalGroupRoleMapping: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description UID of the mapping to retrieve. */
+                uid: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.ExternalGroupRoleMapping"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ExternalGroupRoleMappingsService_DeleteExternalGroupRoleMapping: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description UID of the mapping to delete. */
+                uid: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ExternalGroupRoleMappingsService_BatchDeleteExternalGroupRoleMappings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description BatchDeleteExternalGroupRoleMappingsRequest is the request message for BatchDeleteExternalGroupRoleMappings. */
+        requestBody: {
+            content: {
+                "*/*": components["schemas"]["chainguard.platform.iam.v2beta1.BatchDeleteExternalGroupRoleMappingsRequest"];
+            };
+        };
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.BatchDeleteExternalGroupRoleMappingsResponse"];
                 };
             };
             /** @description An unexpected error response. */
@@ -3008,6 +4145,35 @@ export interface operations {
             };
         };
     };
+    GroupsService_CheckEligibility: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.CheckEligibilityResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
     GroupsService_LookupGroup: {
         parameters: {
             query?: never;
@@ -3156,8 +4322,6 @@ export interface operations {
                      *     Must be 3-63 characters.
                      */
                     name: string;
-                    /** @description Cloud provider names associated with the identity. */
-                    providers?: string[];
                     /** @description Chainguard service principal. */
                     servicePrincipal?: components["schemas"]["chainguard.platform.iam.v2beta1.ServicePrincipal"];
                     /** @description Static OIDC keys configuration. */
@@ -3292,6 +4456,74 @@ export interface operations {
             };
         };
     };
+    IdentitiesService_LookupIdentity: {
+        parameters: {
+            query: {
+                /** @description The OIDC issuer URL (e.g. "https://accounts.google.com"). */
+                issuer: string;
+                /** @description The OIDC subject identifier. */
+                subject: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.LookupIdentityResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    IdentitiesService_UpdateIdentityMetadata: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description UpdateIdentityMetadataRequest is the request for UpdateIdentityMetadata. */
+        requestBody: {
+            content: {
+                "*/*": components["schemas"]["chainguard.platform.iam.v2beta1.UpdateIdentityMetadataRequest"];
+            };
+        };
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.IdentityMetadata"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
     IdentityProvidersService_ListIdentityProviders: {
         parameters: {
             query?: {
@@ -3394,6 +4626,15 @@ export interface operations {
                     name: string;
                     /** @description Defines the parameters necessary for authenticating with the OIDC flow. */
                     oidc?: components["schemas"]["chainguard.platform.iam.v2beta1.IdentityProvider.OIDC"];
+                    /**
+                     * @description SCIM provisioning configuration for this identity provider.
+                     *
+                     *     SCIM is a provisioning protocol and is independent of the authentication
+                     *     mechanism in `configuration`: an identity provider may use OIDC for
+                     *     authentication and SCIM for provisioning at the same time. It is therefore
+                     *     a top-level field rather than a member of the `configuration` oneof.
+                     */
+                    scim?: components["schemas"]["chainguard.platform.iam.v2beta1.IdentityProvider.SCIM"];
                     /**
                      * Format: date-time
                      * @description When the identity provider was last updated.
@@ -3771,6 +5012,40 @@ export interface operations {
             };
         };
     };
+    RoleBindingsService_BatchCreateRoleBindings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description BatchCreateRoleBindingsRequest is the request for BatchCreateRoleBindings. */
+        requestBody: {
+            content: {
+                "*/*": components["schemas"]["chainguard.platform.iam.v2beta1.BatchCreateRoleBindingsRequest"];
+            };
+        };
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.BatchCreateRoleBindingsResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
     RolesService_ListRoles: {
         parameters: {
             query?: {
@@ -3997,6 +5272,250 @@ export interface operations {
             };
         };
     };
+    TermsService_ListTermsAcceptances: {
+        parameters: {
+            query?: {
+                /** @description Maximum number of results to return per page. */
+                pageSize?: number;
+                /** @description Page token from a previous List response for pagination. */
+                pageToken?: string;
+                /** @description Order results by field. Format: "field [asc|desc]" */
+                orderBy?: string;
+                /** @description Number of results to skip before returning. */
+                skip?: number;
+            };
+            header?: never;
+            path: {
+                /**
+                 * @description Group UIDP of the organization to list acceptances for.
+                 *     Includes ancestor organization acceptances.
+                 */
+                group: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.ListTermsAcceptancesResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    TermsService_AcceptTerms: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Group UIDP of the organization accepting the documents. */
+                group: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "*/*": components["schemas"]["chainguard.platform.iam.v2beta1.TermsService.AcceptTermsBody"];
+            };
+        };
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.iam.v2beta1.AcceptTermsResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ArtifactsService_ListArtifacts: {
+        parameters: {
+            query: {
+                /**
+                 * @description The language ecosystems to return artifacts for.
+                 *
+                 *      - ECOSYSTEM_UNSPECIFIED: Unspecified ecosystem.
+                 *      - ECOSYSTEM_JAVA: Java ecosystem (Maven).
+                 *      - ECOSYSTEM_PYTHON: Python ecosystem (PyPI).
+                 */
+                ecosystems: ("ECOSYSTEM_UNSPECIFIED" | "ECOSYSTEM_JAVA" | "ECOSYSTEM_PYTHON")[];
+                /**
+                 * @description A string to search artifacts by. If empty, all artifacts
+                 *     from the given ecosystem will be returned.
+                 */
+                query?: string;
+                /** @description Specify the CUDA version of the packages to return from the Python ecosystem. */
+                cudaVersion?: string;
+                /** @description Flag to return only remediated packages for the ecosystems. */
+                remediated?: boolean;
+                /**
+                 * @description Maximum number of artifacts to return per page.
+                 *     Default: 50, Maximum: 200.
+                 */
+                pageSize?: number;
+                /**
+                 * @description Page token from a previous ListArtifacts response for pagination.
+                 *     Opaque token with 3-day expiration.
+                 */
+                pageToken?: string;
+                /**
+                 * @description Number of results to skip before returning.
+                 *     Used for random-access pagination (jumping to arbitrary pages).
+                 *     Can be combined with page_token to skip from cursor position.
+                 *     Must be non-negative.
+                 */
+                skip?: number;
+                /**
+                 * @description Order results by field. Format: "field [asc|desc]"
+                 *     Default: name ascending.
+                 *     Note: Changing order_by between pages invalidates the page_token.
+                 */
+                orderBy?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.libraries.v2beta1.ListArtifactsResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ArtifactsService_GetArtifactCount: {
+        parameters: {
+            query: {
+                /**
+                 * @description The language ecosystems to request the artifact counts for.
+                 *
+                 *      - ECOSYSTEM_UNSPECIFIED: Unspecified ecosystem.
+                 *      - ECOSYSTEM_JAVA: Java ecosystem (Maven).
+                 *      - ECOSYSTEM_PYTHON: Python ecosystem (PyPI).
+                 */
+                ecosystems: ("ECOSYSTEM_UNSPECIFIED" | "ECOSYSTEM_JAVA" | "ECOSYSTEM_PYTHON")[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.libraries.v2beta1.GetArtifactCountResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ArtifactsService_ListArtifactVersions: {
+        parameters: {
+            query?: {
+                /**
+                 * @description Maximum number of versions to return per page.
+                 *     Default: 50, Maximum: 200.
+                 */
+                pageSize?: number;
+                /**
+                 * @description Page token from a previous ListArtifactVersions response for pagination.
+                 *     Opaque token with 3-day expiration.
+                 */
+                pageToken?: string;
+                /**
+                 * @description Number of results to skip before returning.
+                 *     Used for random-access pagination (jumping to arbitrary pages).
+                 *     Can be combined with page_token to skip from cursor position.
+                 *     Must be non-negative.
+                 */
+                skip?: number;
+                /**
+                 * @description Order results by field. Format: "field [asc|desc]"
+                 *     Default: "version desc" (newest first)
+                 *     Note: Changing order_by between pages invalidates the page_token.
+                 */
+                orderBy?: string;
+            };
+            header?: never;
+            path: {
+                /** @description The artifact's unique identifier, as returned by ListArtifacts. */
+                artifactId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.libraries.v2beta1.ListArtifactVersionsResponse"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
     PingService_Ping: {
         parameters: {
             query?: never;
@@ -4041,11 +5560,6 @@ export interface operations {
                 "uidp.ids"?: string[];
                 /** @description Optional exact name to filter by. */
                 name?: string;
-                /**
-                 * @description Whether to exclude the readme field from results.
-                 *     Defaults to false (readme included).
-                 */
-                excludeReadme?: boolean;
                 /**
                  * @description Maximum number of results to return per page.
                  *     Default: 50, Maximum: 200.
@@ -4096,6 +5610,211 @@ export interface operations {
             };
         };
     };
+    ReposService_CreateRepo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Parent group UIDP under which to create the repository. */
+                parent: string;
+            };
+            cookie?: never;
+        };
+        /** @description The repository to create. Required fields: name. */
+        requestBody: {
+            content: {
+                "*/*": components["schemas"]["chainguard.platform.registry.v2beta1.Repo"];
+            };
+        };
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.registry.v2beta1.Repo"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ReposService_UpdateRepo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /**
+                 * @description Unique identifier for the repository (UIDP).
+                 *     Generated by server.
+                 */
+                "repo.uid": string;
+            };
+            cookie?: never;
+        };
+        /** @description The repository to update. The uid identifies the repository. */
+        requestBody: {
+            content: {
+                "*/*": {
+                    /**
+                     * @description Actively maintained tags in this repository.
+                     *     For repositories that sync from another repository, these are synced from
+                     *     that repository.
+                     */
+                    readonly activeTags?: string[];
+                    /**
+                     * @description List of equivalent image names/aliases.
+                     *     For repositories that sync from another repository, these are synced from
+                     *     that repository.
+                     */
+                    readonly aliases?: string[];
+                    /**
+                     * @description Sales grouping labels for the repository.
+                     *     For repositories that sync from another repository, these are synced from
+                     *     that repository.
+                     */
+                    readonly bundles?: string[];
+                    /**
+                     * @description Catalog tier this repository belongs to.
+                     *     For repositories that sync from another repository, this is synced from
+                     *     that repository.
+                     */
+                    readonly catalogTier?: components["schemas"]["chainguard.platform.registry.v2beta1.CatalogTier"];
+                    /**
+                     * Format: date-time
+                     * @description When the repository was created.
+                     */
+                    readonly createTime?: string;
+                    /**
+                     * @description Custom apko image configuration overlay applied when images are rebuilt
+                     *     for this repository. Can only be set on repositories with custom
+                     *     assembly enabled.
+                     */
+                    customOverlay?: components["schemas"]["chainguard.platform.registry.v2beta1.CustomOverlay"];
+                    /**
+                     * @description Optional description of the repository.
+                     *     For repositories that sync from another repository, this defaults to that
+                     *     repository's description.
+                     */
+                    description?: string;
+                    /** @description Human-readable name of the repository. */
+                    name: string;
+                    /**
+                     * @description Repository sync configuration. If set, images and metadata are synced
+                     *     from the source repository to this one.
+                     */
+                    sync_config?: components["schemas"]["chainguard.platform.registry.v2beta1.SyncConfig"];
+                    /**
+                     * Format: date-time
+                     * @description When the repository was last updated.
+                     */
+                    readonly updateTime?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.registry.v2beta1.Repo"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ImagesService_GetArchitectures: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description UIDP of the repository containing the image. */
+                repoUid: string;
+                /** @description Digest of the OCI index manifest. */
+                digest: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.registry.v2beta1.Architectures"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ImagesService_GetSize: {
+        parameters: {
+            query?: {
+                /**
+                 * @description Architecture to get the size for (e.g., "amd64", "arm64").
+                 *     Defaults to "amd64" if not specified.
+                 */
+                architecture?: string;
+            };
+            header?: never;
+            path: {
+                /** @description UIDP of the repository containing the image. */
+                repoUid: string;
+                /** @description Digest of the OCI index manifest. */
+                digest: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["chainguard.platform.registry.v2beta1.Size"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
     ReposService_GetRepo: {
         parameters: {
             query?: never;
@@ -4115,6 +5834,38 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["chainguard.platform.registry.v2beta1.Repo"];
+                };
+            };
+            /** @description An unexpected error response. */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["google.rpc.Status"];
+                };
+            };
+        };
+    };
+    ReposService_DeleteRepo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description UID of the repository to delete. */
+                uid: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful response. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
                 };
             };
             /** @description An unexpected error response. */
