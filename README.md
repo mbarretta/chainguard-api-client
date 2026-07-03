@@ -3,11 +3,12 @@
 Fast, lightweight, type-safe TypeScript client for the [Chainguard API v2 (`v2beta1`)](https://edu.chainguard.dev/chainguard/api/spec-api-v2/).
 
 - Generated types from the upstream OpenAPI spec — full IntelliSense for paths, parameters, and responses
+- Full `v2beta1` surface — IAM, registry (repos, tags, digests), events, libraries, vulnerability advisories, and STS
 - Thin, auth-aware wrapper over [`openapi-fetch`](https://openapi-ts.dev/openapi-fetch/) — minimal runtime, no axios/no node-fetch
 - Native `fetch` only — works in Node 18+, Bun, Deno, modern browsers, and edge runtimes
 - Bring-your-own token — string, sync function, or async function (per-request resolution for rotation)
 
-> **Status:** targets API `v2beta1` (currently in beta). Spec snapshot vendored at [`spec/openapi.json`](./spec/openapi.json).
+> **Status:** targets API `v2beta1` (currently in beta). Spec snapshot vendored at [`spec/openapi.json`](./spec/openapi.json); fetch provenance recorded in [`spec/METADATA.json`](./spec/METADATA.json). Spec-snapshot changes are tracked in the [CHANGELOG](./CHANGELOG.md).
 
 ## Install
 
@@ -177,7 +178,7 @@ npm link chainguard-api-client
 
 ```sh
 # in this repo
-npm run build && npm pack          # produces chainguard-api-client-0.1.0.tgz
+npm run build && npm pack          # produces chainguard-api-client-0.2.0.tgz
 
 # in the consuming project
 npm install /path/to/chainguard-api-client-0.1.0.tgz
@@ -188,27 +189,23 @@ This is the most reproducible option for shared infrastructure repos.
 ## Regenerating types when the upstream spec updates
 
 ```sh
-# refresh the vendored snapshot
-curl -sSfo spec/openapi.json https://edu.chainguard.dev/api-v2beta1.json
-
-# regenerate TypeScript types
-npm run generate
-
-# verify everything still typechecks
-npm run check
+npm run spec:refresh   # fetch upstream spec, stamp spec/METADATA.json, regenerate types
+npm run check          # typecheck + tests + verify types match the spec
 ```
 
-The generated file (`src/generated/types.ts`) is committed so consumers don't need to run codegen on install.
+The generated file (`src/generated/types.ts`) is committed so consumers don't need to run codegen on install. `npm run check` fails if it ever drifts from `spec/openapi.json`. Record breaking type changes in the [CHANGELOG](./CHANGELOG.md) and bump the version accordingly.
 
 ## Scripts
 
-| Script              | What it does                                          |
-| ------------------- | ----------------------------------------------------- |
-| `npm run generate`  | Regenerate `src/generated/types.ts` from the spec     |
-| `npm run build`     | Build dual ESM + CJS + d.ts to `dist/` via `tsup`     |
-| `npm run typecheck` | `tsc --noEmit` against strict TypeScript              |
-| `npm test`          | Run `vitest` once                                     |
-| `npm run check`     | Typecheck + tests (CI-style)                          |
+| Script                 | What it does                                                  |
+| ---------------------- | ------------------------------------------------------------- |
+| `npm run spec:refresh` | Fetch the upstream spec, stamp provenance, regenerate types   |
+| `npm run spec:verify`  | Fail if `src/generated/types.ts` isn't derived from the spec  |
+| `npm run generate`     | Regenerate `src/generated/types.ts` from the spec             |
+| `npm run build`        | Build dual ESM + CJS + d.ts to `dist/` via `tsup`             |
+| `npm run typecheck`    | `tsc --noEmit` against strict TypeScript                      |
+| `npm test`             | Run `vitest` once                                             |
+| `npm run check`        | Typecheck + tests + spec/types sync check (CI-style)          |
 
 ## License
 

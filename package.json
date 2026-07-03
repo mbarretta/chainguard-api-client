@@ -1,6 +1,6 @@
 {
   "name": "chainguard-api-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Fast, lightweight, type-safe TypeScript client for the Chainguard API v2",
   "license": "Apache-2.0",
   "type": "module",
@@ -16,7 +16,6 @@
   },
   "files": [
     "dist",
-    "spec/openapi.json",
     "README.md",
     "LICENSE"
   ],
@@ -26,12 +25,14 @@
   },
   "scripts": {
     "generate": "openapi-typescript spec/openapi.json -o src/generated/types.ts",
+    "spec:refresh": "node scripts/refresh-spec.mjs && npm run generate",
+    "spec:verify": "node scripts/verify-spec.mjs",
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "tsc --noEmit",
-    "check": "npm run typecheck && npm run test",
+    "check": "npm run typecheck && npm run test && npm run spec:verify",
     "prepublishOnly": "npm run check && npm run build"
   },
   "dependencies": {
